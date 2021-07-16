@@ -10,6 +10,8 @@ public class Main {
 		
 		int lastArticleId = 0;
 		
+		Last
+		
 		while(true) {
 			System.out.printf("¸í·É¾î) ");
 			String command = sc.nextLine().trim();
