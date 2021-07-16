@@ -1,5 +1,6 @@
 package com.sbs.java.crud;
 
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
@@ -10,11 +11,13 @@ public class Main {
 		
 		int lastArticleId = 0;
 		
-		Last
+		List<Article> articles = new ArrayList<>();
 		
 		while(true) {
 			System.out.printf("명령어) ");
-			String command = sc.nextLine().trim();
+			String command = sc.nextLine();
+			
+			command = command.trim();
 			
 			if(command.length() == 0) {
 				continue;
@@ -29,6 +32,10 @@ public class Main {
 				String title = sc.nextLine();
 				System.out.printf("내용 : ");
 				String body = sc.nextLine();
+				
+				Article article = new Article(id, title, body);
+				articles.add(article);
+				
 				System.out.printf("%d번 글이 생성되었습니다.\n", id);
 			}
 			
