@@ -5,14 +5,17 @@ import java.util.List;
 import java.util.Scanner;
 
 import com.sbs.java.crud.dto.Article;
+import com.sbs.java.crud.dto.Member;
 import com.sbs.java.crud.util.Util;
 
 public class App {
 
 	private List<Article> articles;
+	private List<Member> members;
 
 	public App() {
 		articles = new ArrayList<>();
+		members = new ArrayList<>();
 	}
 
 	public void start() {
@@ -35,7 +38,39 @@ public class App {
 			if (command.equals("system exit")) {
 				break;
 			}
-			if (command.equals("article write")) {
+			if (command.equals("member join")) {
+				int id = members.size() + 1;
+				String regDate = Util.getNowDateStr();
+				System.out.printf("로그인 아이디 : ");
+				String loginId = sc.nextLine();
+
+				String loginPw = null;
+				String loginPwConfirm = null;
+
+				while (true) {
+
+					System.out.printf("로그인 비밀번호 : ");
+					loginPw = sc.nextLine();
+
+					System.out.printf("로그인 비밀번호 확인: ");
+					loginPwConfirm = sc.nextLine();
+
+					if (loginPw.equals(loginPwConfirm) == false) {
+						System.out.println("비밀번호를 다시 입력해주세요.");
+						continue;
+					}
+
+					break;
+				}
+				System.out.printf("이름 : ");
+				String name = sc.nextLine();
+
+				Member member = new Member(id, regDate, loginId, loginPw, name);
+				members.add(member);
+
+				System.out.printf("%d번 회원이 생성되었습니다.\n", id);
+
+			} else if (command.equals("article write")) {
 				int id = articles.size() + 1;
 				String regDate = Util.getNowDateStr();
 				System.out.printf("제목 : ");
@@ -46,7 +81,7 @@ public class App {
 				Article article = new Article(id, regDate, title, body, 0);
 				articles.add(article);
 
-				System.out.printf("%d번글이 생성되었습니다.\n", id);
+				System.out.printf("%d번 글이 생성되었습니다.\n", id);
 
 			} 
 			else if (command.startsWith("article list")) {
