@@ -45,14 +45,6 @@ public class ArticleController extends Controller{
 		}
 	}
 
-	public void makeTestData() {
-		System.out.println("테스트를 위한 데이터를 생성합니다.");
-
-		articles.add(new Article(1, Util.getNowDateStr(), "제목1", "내용1", 11));
-		articles.add(new Article(2, Util.getNowDateStr(), "제목2", "내용2", 22));
-		articles.add(new Article(3, Util.getNowDateStr(), "제목3", "내용3", 33));
-	}
-
 	private void doWrite() {
 		int id = articles.size() + 1;
 		String regDate = Util.getNowDateStr();
@@ -189,6 +181,14 @@ public class ArticleController extends Controller{
 		}
 
 		return null;
+	}
+	
+	public void makeTestData() {
+		System.out.println("테스트를 위한 게시물 데이터를 생성합니다.");
+
+		articles.add(new Article(1, Util.getNowDateStr(), "제목1", "내용1", 11));
+		articles.add(new Article(2, Util.getNowDateStr(), "제목2", "내용2", 22));
+		articles.add(new Article(3, Util.getNowDateStr(), "제목3", "내용3", 33));
 	}
 
 }
